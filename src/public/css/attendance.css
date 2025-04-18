@@ -1,0 +1,122 @@
+main {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    background-color: #f0eff2;
+}
+
+.attendance-container {
+    max-width: 380px;
+    margin: 100px auto;
+    text-align: center;
+    padding: 40px 30px;
+}
+
+.label {
+    display: inline-block;
+    font-size: 14px;
+    color: #777;
+    font-weight: bold;
+    background-color: #e0e0e0;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.date {
+    font-size: 26px;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    font-weight: 400;
+    color: #333;
+}
+
+.time {
+    font-size: 60px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 6px;
+    margin-bottom: 48px;
+}
+
+.message{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.attendance-button,
+.break-button,
+.checkout-button,
+.return-button {
+    min-width: 140px;
+    height: 52px;
+    padding: 12px 0;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 20px;
+}
+
+.attendance-button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.attendance-button:hover {
+    background-color: #333;
+}
+
+.checkout-button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-button:hover {
+    background-color: #333;
+}
+
+.break-button {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.break-button:hover {
+    background-color: #dddddd;
+}
+
+.return-button {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.return-button:hover {
+    background-color: #dddddd;
+}

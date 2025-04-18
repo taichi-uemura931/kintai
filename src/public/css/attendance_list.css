@@ -1,0 +1,199 @@
+main {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    background-color: #f0eff2;
+    font-weight: bold;
+}
+
+.attendance-list-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px 20px;
+    background-color: #f0eff2;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 30px;
+    border-left: 5px solid #000;
+    padding-left: 10px;
+    text-align: left;
+    color: #333;
+}
+
+.month-switcher {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    margin-bottom: 40px;
+    font-size: 18px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.month-switcher a {
+    color: #828282;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.month-switcher a:hover {
+    text-decoration: underline;
+}
+
+.month-switcher .calendar-icon {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.calendar-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.calendar-icon {
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.calendar-label {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#calendar-input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.attendance-table-container {
+    overflow-y: visible;
+    border-radius: 8px;
+    background-color: #fff;
+    width: 100%;
+}
+
+.attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    border-spacing: 0;
+    table-layout: fixed;
+}
+
+.ellipsis-cell {
+    max-width: 8em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.attendance-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 3px solid #ccc;
+    color: #828282;
+    font-weight: bold;
+}
+
+.attendance-table th,
+.attendance-table td {
+    padding: 12px 10px;
+    text-align: center;
+    border-bottom: 2px solid #ccc;
+    font-size: 16px;
+    color: #828282;
+    white-space: nowrap;
+}
+
+.attendance-table td:last-child a {
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.attendance-table td:last-child a:hover {
+    text-decoration: underline;
+}
+
+.submit-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+.submit-button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    padding: 6px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: gray;
+}
+
+.csv-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+.csv-button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 6px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.csv-button:hover {
+    background-color: gray;
+}
+
+@media (max-width: 768px) {
+    .attendance-list-container {
+        padding: 15px;
+    }
+
+    .attendance-table th,
+    .attendance-table td {
+        font-size: 12px;
+        padding: 10px 5px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .month-switcher {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (min-width: 768px) {
+    .month-switcher {
+        flex-direction: row;
+        gap: 0;
+    }
+}

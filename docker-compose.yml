@@ -1,6 +1,9 @@
 version: '3.8'
 
 services:
+  app:
+    image: php:8.3.0-fpm
+
   nginx:
     image: nginx:1.21.1
     ports:
@@ -12,7 +15,12 @@ services:
       - php
 
   php:
-    build: ./docker/php
+    build:
+      context: ./docker/php
+      args:
+        UID: ${UID}
+        GID: ${GID}
+    user: "${UID}:${GID}"
     volumes:
       - ./src:/var/www/
 
@@ -40,3 +48,9 @@ services:
       - mysql
     ports:
       - 8080:80
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "8025:8025"
+      - "1025:1025"

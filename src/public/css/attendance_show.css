@@ -1,0 +1,185 @@
+main {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    background-color: #f0eff2;
+    font-weight: bold;
+}
+
+.attendance-show-container {
+    position: relative;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px 20px;
+    background-color: #f0eff2;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 30px;
+    border-left: 5px solid #000;
+    padding-left: 10px;
+    text-align: left;
+    color: #333;
+}
+
+.attendance-detail-table {
+    max-height: 400px;
+    overflow-y: auto;
+    border-radius: 8px;
+    background-color: #fff;
+    width: 100%;
+}
+
+.attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    border-spacing: 0;
+    table-layout: fixed;
+}
+
+.attendance-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 3px solid #ccc;
+    color: #000;
+    font-weight: bold;
+}
+
+.attendance-table th,
+.attendance-table td {
+    padding: 12px 10px;
+    text-align: center;
+    border-bottom: 2px solid #ccc;
+    font-size: 16px;
+    color: #000;
+    white-space: nowrap;
+}
+
+.attendance-table td:last-child a {
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.attendance-table td:last-child a:hover {
+    text-decoration: underline;
+}
+
+input[type="time"] {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    padding: 5px 20px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.time-range-separator {
+    display: inline-block;
+    margin: 0 70px;
+    font-weight: bold;
+}
+
+.note-textarea {
+    width: 500px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 12px 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    min-height: 100px;
+    resize: vertical;
+    text-align: left;
+    vertical-align: top;
+    box-sizing: border-box;
+}
+
+.note-display {
+    width: 500px;
+    font-size: 14px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: pre-wrap;
+    box-sizing: border-box;
+    display: inline-block;
+    text-align: left;
+}
+
+.pending-message-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+.pending-message {
+    color: #e66;
+    font-size: 14px;
+    text-align: right;
+    margin-top: 20px;
+}
+
+.error-messages {
+    text-align: left;
+    margin-top: 15px;
+    margin-left: 5%;
+    color: #e66;
+    font-size: 14px;
+}
+
+.submit-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+.submit-button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    padding: 6px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: gray;
+}
+
+@media (max-width: 768px) {
+    .attendance-list-container {
+        padding: 15px;
+    }
+
+    .attendance-table th,
+    .attendance-table td {
+        font-size: 12px;
+        padding: 10px 5px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .month-switcher {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (min-width: 768px) {
+    .month-switcher {
+        flex-direction: row;
+        gap: 0;
+    }
+}
