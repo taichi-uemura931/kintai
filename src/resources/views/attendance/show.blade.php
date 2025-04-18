@@ -9,12 +9,16 @@
     <h2 class="title">勤怠詳細</h2>
 
     @php
-        $hasPendingRequest = \App\Models\StampCorrectionRequest::where('attendance_id', $attendance->id)
-                            ->where('status', 'pending')
-                            ->exists();
+        use App\Models\StampCorrectionRequest;
 
-        if ($attendance->is_pending && !$hasPendingRequest) {
-            $isPending = false;
+        $latestRequest = StampCorrectionRequest::where('attendance_id', $attendance->id)
+                            ->latest('requested_at')
+                            ->first();
+
+        $isEditable = true;
+
+        if ($latestRequest && in_array($latestRequest->status, ['pending', 'approved'])) {
+            $isEditable = false;
         }
 
         $restsArray = $attendance->rests->toArray();
@@ -42,7 +46,7 @@
                 <tr>
                     <th>出勤・退勤</th>
                     <td>
-                        @if ($isPending)
+                        @if (!$isEditable)
                             {{ \Carbon\Carbon::parse($attendance->work_start)->format('H:i') }}
                             <span class="time-range-separator">〜</span>
                             {{ \Carbon\Carbon::parse($attendance->work_end)->format('H:i') }}
@@ -55,26 +59,26 @@
                 </tr>
 
                 @foreach ($restsToShow as $index => $rest)
-                <tr>
-                    <th>休憩{{ $index + 1 }}</th>
-                    <td>
-                        @if ($isPending)
-                            {{ isset($rest['start']) ? \Carbon\Carbon::parse($rest['start'])->format('H:i') : '--:--' }}
-                            <span class="time-range-separator">〜</span>
-                            {{ isset($rest['end']) ? \Carbon\Carbon::parse($rest['end'])->format('H:i') : '--:--' }}
-                        @else
-                            <input type="time" name="rests[{{ $index }}][start]" value="{{ old('rests.$index.start', $rest['start'] ?? '') }}">
-                            <span class="time-range-separator">〜</span>
-                            <input type="time" name="rests[{{ $index }}][end]" value="{{ old('rests.$index.end', $rest['end'] ?? '') }}">
-                        @endif
-                    </td>
-                </tr>
-                @endforeach
+                    <tr>
+                        <th>休憩{{ $index + 1 }}</th>
+                        <td>
+                            @if (!$isEditable)
+                                {{ isset($rest['start']) ? \Carbon\Carbon::parse($rest['start'])->format('H:i') : '--:--' }}
+                                <span class="time-range-separator">〜</span>
+                                {{ isset($rest['end']) ? \Carbon\Carbon::parse($rest['end'])->format('H:i') : '--:--' }}
+                            @else
+                                <input type="time" name="rests[{{ $index }}][start]" value="{{ old("rests.$index.start", $rest['start'] ?? '') }}">
+                                <span class="time-range-separator">〜</span>
+                                <input type="time" name="rests[{{ $index }}][end]" value="{{ old("rests.$index.end", $rest['end'] ?? '') }}">
+                            @endif
+                        </td>
+                    </tr>
+                    @endforeach
 
                 <tr>
                     <th>備考</th>
                     <td>
-                        @if ($isPending)
+                        @if (!$isEditable)
                             <div class="note-display">{{ $attendance->note }}</div>
                         @else
                             <textarea name="note" class="note-textarea" rows="3">{{ old('note', $attendance->note) }}</textarea>
@@ -94,9 +98,9 @@
             </div>
         @endif
 
-        @if ($isPending)
+        @if (!$isEditable)
             <div class="pending-message-container">
-                <p class="pending-message">※承認待ちのため修正はできません。</p>
+                <p class="pending-message">※承認済みまたは申請中のため修正はできません。</p>
             </div>
         @else
             <div class="submit-container">
